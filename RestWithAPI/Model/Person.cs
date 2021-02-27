@@ -12,5 +12,6 @@ namespace RestWithAPI.Model
         public long LastName { get; set; }
         public long Adress { get; set; }
         public long Gender { get; set; }
+        public long Gender { get; set; }
     }
 }
