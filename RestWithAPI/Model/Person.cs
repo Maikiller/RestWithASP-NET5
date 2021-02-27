@@ -8,10 +8,9 @@ namespace RestWithAPI.Model
     public class Person
     {
         public long Id { get; set; }
-        public long firstName { get; set; }
-        public long LastName { get; set; }
-        public long Adress { get; set; }
-        public long Gender { get; set; }
-        public long Gender { get; set; }
+        public string firstName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+        public string Gender { get; set; }
     }
 }
