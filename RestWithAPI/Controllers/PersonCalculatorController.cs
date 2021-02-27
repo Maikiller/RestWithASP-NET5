@@ -9,11 +9,11 @@ namespace RestWithAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CalculatorController : ControllerBase
+    public class PersonCalculatorController : ControllerBase
     {
-        private readonly ILogger<CalculatorController> _logger;
+        private readonly ILogger<PersonCalculatorController> _logger;
 
-        public CalculatorController(ILogger<CalculatorController> logger)
+        public PersonCalculatorController(ILogger<PersonCalculatorController> logger)
         {
             _logger = logger;
         }
@@ -21,40 +21,7 @@ namespace RestWithAPI.Controllers
         [HttpGet("sum/{firstNumber}/{secondNumber}")]
         public IActionResult Sum(string firstNumber, string secondNumber)
         {
-            if (IsNumeric(firstNumber) && IsNumeric(firstNumber))
-            {
-                var sum = ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber);
-                return Ok(sum.ToString());
-            }
             return BadRequest("Invalid Input");
-        }
-
-        [HttpGet("sub/{firstNumber}/{secondNumber}")]
-        public IActionResult Sub(string firstNumber, string secondNumber)
-        {
-            if (IsNumeric(firstNumber) && IsNumeric(firstNumber))
-            {
-                var sum = ConvertToDecimal(firstNumber) * ConvertToDecimal(secondNumber);
-                return Ok(sum.ToString());
-            }
-            return BadRequest("Invalid Input");
-        }
-
-        private bool IsNumeric(string srtNumber)
-        {
-            double number;
-            bool IsNumber = double.TryParse(srtNumber, System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out number);
-            return IsNumber;
-        }
-
-        private int ConvertToDecimal(string srtNumber)
-        {
-            decimal decimalValue;
-            if (decimal.TryParse(srtNumber, out decimalValue))
-            {
-                return (int)decimalValue;
-            }
-            return 0;
         }
     }
 }
